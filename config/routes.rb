@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
   root to: "pages#home"
+  devise_for :admins, controllers: {
+    sessions: "admin/sessions"
+  }
+  devise_for :customers, controllers: {
+    registrations: "customer/registrations",
+    sessions: "customer/sessions"
+  }
 
   get "/up/", to: "up#index", as: :up
   get "/up/databases", to: "up#databases", as: :up_databases
