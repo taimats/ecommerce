@@ -5,10 +5,11 @@ class Customer::ProductsController < ApplicationController
 
   def show
     @products = Product.find(params[:id])
+    @cart_item = CartItem.new
   end
 
   private
-  
+
   def get_products(params)
     return Product.latest, "latest" if params[:latest]
     return Product.price_high_to_low, "price_high_to_low" if params[:price_high_to_low]
